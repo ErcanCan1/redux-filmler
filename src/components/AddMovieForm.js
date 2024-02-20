@@ -17,11 +17,13 @@ const AddMovieForm = (props) => {
   const handleChange = (e) => {
     setMovie({
       ...movie,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatchEvent(addMovie(movie));
   }
 
   const { title, director, genre, metascore, description } = movie;
@@ -59,7 +61,11 @@ const AddMovieForm = (props) => {
           <Link to={`/movies`} className="myButton bg-zinc-500">
             Vazgeç
           </Link>
-          <button type="submit" className="myButton bg-green-700 hover:bg-green-600">Ekle</button>
+          <button 
+            type="submit"   
+            className="myButton bg-green-700 hover:bg-green-600"
+          
+            >Ekle</button>
         </div>
       </form>
     </div>
